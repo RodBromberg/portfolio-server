@@ -5,7 +5,7 @@ import { sendSms } from './sendSms'
 const app = express();
 app.use(express.json())
 app.use(cors())
-
+// port 
 const PORT = process.env.PORT || 8080
 
 
