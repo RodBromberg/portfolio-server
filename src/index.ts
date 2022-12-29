@@ -43,7 +43,8 @@ app.post('/text', async (req: Request, res: Response) => {
     })
   });
   
-  app.listen(process.env.PORT || `0.0.0.0:${PORT}`, () => console.log(`Live at ${PORT}`))
+  app.listen(process.env.PORT || `${PORT}`, () => console.log(`Live at ${PORT}`))
+  // app.listen(PORT)
 
 
 
