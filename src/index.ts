@@ -9,6 +9,12 @@ app.use(cors())
 const PORT = 5000
 
 
+app.get('/content', (req, res) => {
+  res.status(201).send({
+    msg: 'Success'
+  })
+})
+
 
 app.post('/text', async (req: Request, res: Response) => {
     const { name, phone, message } = req.body
