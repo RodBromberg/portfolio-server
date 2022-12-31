@@ -8,7 +8,9 @@ app.use(cors())
 // port 
 
 app.get('/', (req, res) => {
-  res.send('hello')
+  res.status(201).json({
+    msg: 'Does this work?'
+  })
 })
 
 app.get('/content', (req, res) => {
