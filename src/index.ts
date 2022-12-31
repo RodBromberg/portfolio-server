@@ -6,15 +6,16 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 // port 
-const PORT = 5000
 
+app.get('/', (req, res) => {
+  res.send('hello')
+})
 
 app.get('/content', (req, res) => {
   res.status(201).send({
     msg: 'Success'
   })
 })
-
 
 app.post('/text', async (req: Request, res: Response) => {
     const { name, phone, message } = req.body
@@ -26,79 +27,6 @@ app.post('/text', async (req: Request, res: Response) => {
 })
 
 // Create user endpoint
-  app.post('/users', (req, res) => {
-    const { email, password, phone } = req.body;
-    const user = {
-      email,
-      password,
-      phone
-    };
-    // userDatabase.push(user);  
-    // const welcomeMessage = 'Welcome to Chillz! Your verification code is 54875';
-    sendSms(user.phone, req.body.message)
-  
-    res.status(201).send({
-      message: req.body.message,
-      data: user
-    })
-  });
-  
+
+  const PORT = 5000
   app.listen(process.env.PORT || `${PORT}`, () => console.log(`Live at ${PORT}`))
-  // app.listen(PORT)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import express, { Request, Response } from 'express'
-// import { sendSms } from './sendSms'
-// const bodyParser = require('body-parser');
-// const app = express();
-
-// app.use(bodyParser.urlencoded({ extended: false }));
-
-// app.use(bodyParser.json());
-
-
-// const userDatabase = [];
-// const PORT = 8080
-
-// // Create user endpoint
-// app.post('/users', (req, res) => {
-//     const { email, password, phone } = req.body;
-//     const user = {
-//       email,
-//       password,
-//       phone
-//     };
-  
-//     userDatabase.push(user);
-  
-//     const welcomeMessage = req.body.message
-  
-//     sendSms(user.phone, welcomeMessage);
-
-//     res.status(201).send({
-//         message: req.body.message,
-//     })
-  
-//     res.status(201).send({
-//       message: 'Account created successfully, kindly check your phone to activate your account!',
-//       data: user
-//     })
-//   });
-  
-//   app.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}`);
-//   });
