@@ -36,8 +36,6 @@ app.post('/users', (req, res) => {
         password,
         phone
     };
-    // userDatabase.push(user);  
-    // const welcomeMessage = 'Welcome to Chillz! Your verification code is 54875';
     (0, sendSms_1.sendSms)(user.phone, req.body.message);
     res.status(201).send({
         message: req.body.message,
@@ -45,33 +43,3 @@ app.post('/users', (req, res) => {
     });
 });
 app.listen(process.env.PORT || PORT, () => console.log(`Live at ${PORT}`));
-// import express, { Request, Response } from 'express'
-// import { sendSms } from './sendSms'
-// const bodyParser = require('body-parser');
-// const app = express();
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
-// const userDatabase = [];
-// const PORT = 8080
-// // Create user endpoint
-// app.post('/users', (req, res) => {
-//     const { email, password, phone } = req.body;
-//     const user = {
-//       email,
-//       password,
-//       phone
-//     };
-//     userDatabase.push(user);
-//     const welcomeMessage = req.body.message
-//     sendSms(user.phone, welcomeMessage);
-//     res.status(201).send({
-//         message: req.body.message,
-//     })
-//     res.status(201).send({
-//       message: 'Account created successfully, kindly check your phone to activate your account!',
-//       data: user
-//     })
-//   });
-//   app.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}`);
-//   });
